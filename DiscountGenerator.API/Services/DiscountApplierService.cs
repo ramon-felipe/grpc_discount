@@ -1,7 +1,6 @@
 ﻿using Grpc.Core;
 using GrpcDiscount.Application.Interfaces;
 using GrpcDiscountApplier;
-using GrpcDiscountGenerator.Domain.Exceptions;
 
 namespace GrpcDiscount.API.Services;
 
@@ -21,7 +20,7 @@ public sealed class DiscountApplierService : DiscountApplier.DiscountApplierBase
         var result = await this._discountCodeApplier.ApplyCodeAsync(request.Code);
 
         return result.IsFailure
-            ? throw new DiscountApplyException(result.Error)
+            ? new UseCodeReply { Result = result.Error }
             : new UseCodeReply { Result = $"code [{request.Code}] applied successfully" };
     }
 }

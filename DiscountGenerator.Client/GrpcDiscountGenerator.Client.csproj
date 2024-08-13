@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\discountApplier.proto" />
     <None Remove="Protos\discountGenerator.proto" />
   </ItemGroup>
 
@@ -21,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\discountGenerator.proto" GrpcServices="Client" />
+	  <Protobuf Include="Protos\discountApplier.proto" GrpcServices="Client" />
+	  <Protobuf Include="Protos\discountGenerator.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

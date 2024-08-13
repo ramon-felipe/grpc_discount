@@ -27,6 +27,7 @@ public sealed class DiscountCodeApplier : IDiscountCodeApplier
                     return Result.Failure<string>("No discount found");
 
                 this._repository.Delete(discount.Value);
+                this._repository.Save();
             }
 
             return code;
