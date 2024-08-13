@@ -1,4 +1,4 @@
-﻿namespace GrpcDiscount.Application;
+﻿namespace GrpcDiscount.Application.Interfaces;
 
 public interface IDiscountHelper
 {

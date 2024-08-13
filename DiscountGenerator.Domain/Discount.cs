@@ -2,8 +2,13 @@
 
 namespace GrpcDiscountGenerator.Domain;
 
-public sealed class Discount : BaseEntity
+public class Discount : BaseEntity
 {
+    protected Discount()
+    {
+        
+    }
+
     public Discount(string code)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(code);

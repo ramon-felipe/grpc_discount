@@ -1,13 +1,15 @@
-using GrpcDiscount.API;
 using GrpcDiscount.API.Services;
 using GrpcDiscount.Application;
+using GrpcDiscountGenerator.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddGrpcReflection();
-builder.Services.AddApplicationServices();
+builder.Services
+    .AddApplicationServices()
+    .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

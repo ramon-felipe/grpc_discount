@@ -1,6 +1,6 @@
-﻿using GrpcDiscount.Application;
-using Grpc.Core;
+﻿using Grpc.Core;
 using GrpcDiscountGenerator;
+using GrpcDiscount.Application.Interfaces;
 
 namespace GrpcDiscount.API.Services;
 

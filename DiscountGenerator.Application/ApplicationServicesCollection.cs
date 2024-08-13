@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using GrpcDiscount.Application.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GrpcDiscount.Application;
 

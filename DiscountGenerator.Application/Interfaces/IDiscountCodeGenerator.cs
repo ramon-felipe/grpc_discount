@@ -1,6 +1,6 @@
 ﻿using GrpcDiscountGenerator.Domain;
 
-namespace GrpcDiscount.Application;
+namespace GrpcDiscount.Application.Interfaces;
 
 public interface IDiscountCodeGenerator
 {
