@@ -24,7 +24,7 @@ public sealed class DiscountCode : ValueObject
 
     public static DiscountCode CreateEmpty() => new (string.Empty);
 
-    private static bool HasValidLength(int length)
+    public static bool HasValidLength(int length)
     {
         int[] allowedCodeLengths = [7, 8];
 

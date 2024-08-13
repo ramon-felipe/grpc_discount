@@ -1,7 +1,6 @@
 ﻿using GrpcDiscount.Application.Interfaces;
 using GrpcDiscountGenerator.Domain;
 using GrpcDiscountGenerator.Infrastructure.Repositories;
-using System.Threading.Tasks;
 
 namespace GrpcDiscount.Application;
 
