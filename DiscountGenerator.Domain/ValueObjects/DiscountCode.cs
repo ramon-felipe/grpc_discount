@@ -2,7 +2,7 @@
 
 namespace GrpcDiscountGenerator.Domain.ValueObjects;
 
-public sealed class DiscountCode
+public sealed class DiscountCode : ValueObject
 {
     private DiscountCode(string value)
     {
@@ -29,5 +29,10 @@ public sealed class DiscountCode
         int[] allowedCodeLengths = [7, 8];
 
         return allowedCodeLengths.Contains(length);
+    }
+
+    protected override IEnumerable<IComparable> GetEqualityComponents()
+    {
+        yield return Value;
     }
 }
