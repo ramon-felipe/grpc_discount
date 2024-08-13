@@ -1,15 +1,20 @@
 using GrpcDiscount.Application;
 using FluentAssertions;
+using GrpcDiscountGenerator.Domain;
+using GrpcDiscountGenerator.Infrastructure.Repositories;
+using NSubstitute;
 
 namespace DiscountGenerator.Tests.Unit.Application;
 
 public class DiscountHelperTests
 {
     private readonly DiscountHelper discountHelper;
+    private readonly IRepository<Discount> _repository;
 
     public DiscountHelperTests()
     {
-        discountHelper = new DiscountHelper();
+        this._repository = Substitute.For<IRepository<Discount>>();
+        discountHelper = new DiscountHelper(this._repository);
     }
 
     [Theory]

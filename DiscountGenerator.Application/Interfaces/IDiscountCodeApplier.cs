@@ -3,8 +3,7 @@ using GrpcDiscountGenerator.Domain;
 
 namespace GrpcDiscount.Application.Interfaces;
 
-public interface IDiscountHelper
+public interface IDiscountCodeApplier
 {
-    string GenerateDiscount(int length);
-    IMaybe<Discount> GetLast();
+    Task<Result<string>> ApplyCodeAsync(string code);
 }

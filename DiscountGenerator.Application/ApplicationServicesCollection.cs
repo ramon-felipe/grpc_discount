@@ -9,7 +9,8 @@ public static class ApplicationServicesCollection
     {
         return services
             .AddTransient<IDiscountHelper, DiscountHelper>()
-            .AddTransient<IDiscountCodeGenerator, DiscountCodeGenerator>()
+            .AddScoped<IDiscountCodeGenerator, DiscountCodeGenerator>()
+            .AddScoped<IDiscountCodeApplier, DiscountCodeApplier>()
             ;
     }
 }

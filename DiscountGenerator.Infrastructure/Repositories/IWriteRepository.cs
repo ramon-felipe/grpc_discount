@@ -8,5 +8,6 @@ public interface IWriteRepository<in T>
     void BulkInsert(IEnumerable<T> entities);
     Result Save();
     Result Update(T entity);
+    void Delete(T entity);
     void Delete(int id);
 }

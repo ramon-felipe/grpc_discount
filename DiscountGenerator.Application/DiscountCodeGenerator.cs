@@ -1,4 +1,5 @@
-﻿using GrpcDiscount.Application.Interfaces;
+﻿using CSharpFunctionalExtensions;
+using GrpcDiscount.Application.Interfaces;
 using GrpcDiscountGenerator.Domain;
 using GrpcDiscountGenerator.Infrastructure.Repositories;
 

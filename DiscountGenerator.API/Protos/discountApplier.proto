@@ -13,5 +13,5 @@ message UseCodeRequest {
 }
 
 message UseCodeReply {
-  bytes result = 1;
+  string result = 1;
 }

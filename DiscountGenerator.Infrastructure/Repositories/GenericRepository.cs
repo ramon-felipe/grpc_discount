@@ -31,6 +31,11 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
         _dbSet.Remove(entityOrNothing.Value);
     }
 
+    public void Delete(T entity)
+    {
+        _dbSet.Remove(entity);
+    }
+
     public IMaybe<T> Get(int id)
     {
         var entity = _dbSet.SingleOrDefault(_ => _.Id == id);
@@ -50,6 +55,13 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
         var entities = _dbSet.AsNoTracking();
 
         return entities;
+    }
+
+    public IMaybe<T> GetLast()
+    {
+        var entity = _dbSet.AsNoTracking().OrderBy(_ => _.Id).LastOrDefault();
+
+        return entity == null ? Maybe.None : Maybe.From(entity);
     }
 
     public Result Save()
