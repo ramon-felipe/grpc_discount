@@ -1,6 +1,6 @@
 ﻿using Grpc.Core;
-using GrpcDiscountGenerator;
 using GrpcDiscount.Application.Interfaces;
+using GrpcDiscountGenerator;
 
 namespace GrpcDiscount.API.Services;
 
@@ -20,10 +20,7 @@ public class DiscountGeneratorService : DiscountGenerator.DiscountGeneratorBase
         if (request.Length < 7 || request.Length > 8)
             throw new ArgumentException("Invalid Discount Length");
 
-        await foreach (var item in this._dicountCodeGenerator.GenerateDiscountCodeAsync(request.Count, request.Length))
-        {
-            this._logger.LogInformation("Generated discount code: {Item}", item.Code.Value);
-        }
+        await this._dicountCodeGenerator.GenerateCodesAsync(request.Count, request.Length);
 
         return new DiscountGeneratorReply { Result = true };
     }

@@ -6,7 +6,7 @@ using GrpcDiscountGenerator.Domain;
 using GrpcDiscountGenerator.Infrastructure.Repositories;
 using CSharpFunctionalExtensions;
 
-namespace GrpcDiscountGenerator.Tests.Unit;
+namespace DiscountGenerator.Tests.Unit.Application;
 
 public sealed class DiscountCodeGeneratorTests
 {
@@ -16,9 +16,9 @@ public sealed class DiscountCodeGeneratorTests
 
     public DiscountCodeGeneratorTests()
     {
-        this._discountHelper = Substitute.For<IDiscountHelper>();
-        this._repository = Substitute.For<IRepository<Discount>>();
-        this._discountCodeGenerator = new DiscountCodeGenerator(this._discountHelper, this._repository);
+        _discountHelper = Substitute.For<IDiscountHelper>();
+        _repository = Substitute.For<IRepository<Discount>>();
+        _discountCodeGenerator = new DiscountCodeGenerator(_discountHelper, _repository);
     }
 
     [Theory]
@@ -27,16 +27,16 @@ public sealed class DiscountCodeGeneratorTests
     public async Task Should_GenerateDiscount_Successfully(int count, int length, string code)
     {
         // Arrange
-        this._discountHelper.GenerateDiscount(length).Returns(code);
-        this._repository.Get(Arg.Any<Func<Discount, bool>>()).Returns(Maybe<Discount>.None);
+        _discountHelper.GenerateDiscount(length).Returns(code);
+        _repository.Get(Arg.Any<Func<Discount, bool>>()).Returns(Maybe<Discount>.None);
 
         // Act
-        var result = await this._discountCodeGenerator.GenerateDiscountCodeAsync(count, length).ToListAsync();
+        var result = await _discountCodeGenerator.GenerateCodesAsync(count, length);
 
         // Assert
         result.Should().HaveCount(count);
         result.Select(_ => _.Code.Value.Should().HaveLength(length));
 
-        this._discountHelper.Received(count).GenerateDiscount(length);
+        _discountHelper.Received(count).GenerateDiscount(length);
     }
 }

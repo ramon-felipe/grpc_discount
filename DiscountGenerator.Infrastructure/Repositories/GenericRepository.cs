@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using EFCore.BulkExtensions;
 using GrpcDiscountGenerator.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -62,5 +63,10 @@ public class GenericRepository<T> : IRepository<T> where T : BaseEntity
         _dbSet.Attach(entity);
         _context.Entry(entity).State = EntityState.Modified;
         return Result.Success();
+    }
+
+    public void BulkInsert(IEnumerable<T> entities)
+    {
+        _context.BulkInsert(entities);
     }
 }

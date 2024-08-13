@@ -4,5 +4,5 @@ namespace GrpcDiscount.Application.Interfaces;
 
 public interface IDiscountCodeGenerator
 {
-    IAsyncEnumerable<Discount> GenerateDiscountCodeAsync(int count, int length);
+    Task<HashSet<Discount>> GenerateCodesAsync(int count, int length);
 }

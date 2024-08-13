@@ -1,7 +1,7 @@
 using GrpcDiscount.Application;
 using FluentAssertions;
 
-namespace GrpcDiscountGenerator.Tests.Unit;
+namespace DiscountGenerator.Tests.Unit.Application;
 
 public class DiscountHelperTests
 {
