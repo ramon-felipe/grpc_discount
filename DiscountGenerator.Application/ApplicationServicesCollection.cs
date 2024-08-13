@@ -1,0 +1,14 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace GrpcDiscount.Application;
+
+public static class ApplicationServicesCollection
+{
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        return services
+            .AddTransient<IDiscountHelper, DiscountHelper>()
+            .AddTransient<IDiscountCodeGenerator, DiscountCodeGenerator>()
+            ;
+    }
+}

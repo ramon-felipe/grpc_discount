@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "DiscountClient";
+
+package discountGen;
+
+service DiscountGenerator {
+  rpc Generate (DiscountGeneratorRequest) returns (DiscountGeneratorReply);
+}
+
+message DiscountGeneratorRequest {
+  int32 count = 1;
+  int32 length = 7;
+}
+
+message DiscountGeneratorReply {
+  bool result = 1;
+}

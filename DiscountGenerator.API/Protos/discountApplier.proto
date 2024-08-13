@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcDiscountApplier";
+
+package discountUse;
+
+service DiscountApplier {
+  rpc Apply (UseCodeRequest) returns (UseCodeReply);
+}
+
+message UseCodeRequest {
+  string code = 1;
+}
+
+message UseCodeReply {
+  bytes result = 1;
+}
